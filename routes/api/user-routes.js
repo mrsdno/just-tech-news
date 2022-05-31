@@ -1,6 +1,14 @@
 const router = require('express').Router();
 const { User, Post, Comment, Vote } = require('../../models');
 
+// There are a number of guidelines that go into creating a RESTful API, and many are quite abstract and take time to truly grasp. Still, there are three guidelines we can put to use:
+
+// Name your endpoints in a way that describes the data you're interfacing with, such as /api/users.
+
+// Use HTTP methods like GET, POST, PUT, and DELETE to describe the action you're performing to interface with that endpoint; for example, GET /api/users means you should expect to receive user data.
+
+// Use the proper HTTP status codes like 400, 404, and 500 to indicate errors in a request.
+
 // get all users
 router.get('/', (req, res) => {
   User.findAll({
@@ -54,6 +62,7 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
+  // equivelent to SQL INSERT INTO users 
   // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
   User.create({
     username: req.body.username,

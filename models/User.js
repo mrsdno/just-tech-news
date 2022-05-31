@@ -11,6 +11,7 @@ class User extends Model {
 }
 
 // create fields/columns for User model
+// define tables and columns configuration npm i 
 User.init(
   {
     id: {
