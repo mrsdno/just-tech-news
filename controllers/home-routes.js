@@ -30,7 +30,6 @@ router.get('/', (req, res) => {
     })
       .then(dbPostData => {
         // pass a single post object into the homepage template
-        console.log(dbPostData[0]);
         res.render('homepage', dbPostData[0]);
       })
       .catch(err => {
@@ -38,6 +37,16 @@ router.get('/', (req, res) => {
         res.status(500).json(err);
       });
   });
+
+router.get('/login', (req, res) => {
+  // check for a session and redirect to homepage if one exists
+  if (req.session.loggedIn) {
+    res.redirect('/');
+    return;
+  }
+
+  res.render('login');
+});
 
 module.exports = router;
 
