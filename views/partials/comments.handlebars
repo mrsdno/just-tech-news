@@ -1,0 +1,19 @@
+<div class="comments">
+    {{!-- using each helper to iterate over the comments array
+    {{#each post.comments as |comment|}} would work too --}}
+    {{! cannot easily destructure comments array, so use this keyword to refer to the parent object}}
+    {{#each this}}
+    <section class="comment">
+        <div class="meta">
+
+            
+            {{user.username}} on {{format_date created_at}} {{! works essentially the same as format_date(created_at)}}
+            on
+            {{created_at}}
+        </div>
+        <div class="text">
+            {{comment_text}}
+        </div>
+    </section>
+    {{/each}}
+</div>
